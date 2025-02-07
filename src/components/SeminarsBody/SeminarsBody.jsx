@@ -43,7 +43,7 @@ const SeminarsBody = () => {
     // Запрос на удаление
     try {
       await removeSeminar(id);
-			
+
       setSeminars((prevSeminars) =>
         prevSeminars.filter((item) => item.id !== id)
       );
@@ -54,14 +54,22 @@ const SeminarsBody = () => {
 
   if (isLoading) return <div>Загрузка семинаров...</div>;
 
-  if (error) return <div>{error.message}</div>;
+  if (error) {
+    return (
+      <div>
+        <p>Ошибка загрузки: {error.message}</p>
+        <button onClick={() => window.location.reload()}>
+          Попробовать снова
+        </button>
+      </div>
+    );
+  }
 
   return (
     <>
       <div className="seminars">
         {seminars.map((item) => (
           <Seminar
-            key={item.id}
             item={item}
             onDelete={onDelete}
             setId={setId}

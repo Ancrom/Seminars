@@ -17,8 +17,14 @@ const SeminarModal = ({ setIsModalOpen, id, onSubmit }) => {
     setNewSeminar((prevSeminar) => ({ ...prevSeminar, [key]: value }));
   };
 
+  const closeModal = (e) => {
+    if (e.target.classList.contains("seminar-modal")) {
+      setIsModalOpen(false);
+    }
+  };
+
   return (
-    <div className="seminar-modal">
+    <div className="seminar-modal" onClick={closeModal}>
       <div className="seminar-modal__body">
         <h1 className="seminar-modal__title">Редактировать семинар</h1>
         <form action="" className="seminar-modal__form form">
