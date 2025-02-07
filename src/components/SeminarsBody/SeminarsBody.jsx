@@ -9,9 +9,10 @@ const SeminarsBody = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [id, setId] = useState(null);
+  const [id, setId] = useState(null); // ID семинара для редактирования
 
   useEffect(() => {
+		// Загружаем список семинаров при первом рендере
     getSeminars()
       .then((data) => setSeminars(data))
       .catch((err) => setError(err))
@@ -22,6 +23,7 @@ const SeminarsBody = () => {
     try {
       const newSeminar = await updateSeminar(id, newData);
 
+			// Обновляем только изменённый семинар в списке
       setSeminars((prevSeminars) =>
         prevSeminars.map((item) => (item.id === id ? { ...newSeminar } : item))
       );
@@ -33,6 +35,7 @@ const SeminarsBody = () => {
   };
 
   const onDelete = (id) => {
+		// Локально удаляем семинар, запрос на сервер подаётся в компоненте семинара
     setSeminars((prevSeminars) =>
       prevSeminars.filter((item) => item.id !== id)
     );

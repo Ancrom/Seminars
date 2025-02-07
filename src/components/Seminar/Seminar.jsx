@@ -5,8 +5,8 @@ import "../../assets/styles/button.css";
 export default function Seminar({ item, onDelete, setId, setIsModalOpen }) {
   const handleDelete = async () => {
     if (window.confirm("Вы действительно хотите удалить семинар?")) {
-      removeSeminar(item.id)
-        .then(() => onDelete(item.id))
+      removeSeminar(item.id) // Запрос на сервер на удаление семинара
+        .then(() => onDelete(item.id)) // Локально удаляем семинар
         .catch((err) => console.log(err));
     }
   };
@@ -19,10 +19,13 @@ export default function Seminar({ item, onDelete, setId, setIsModalOpen }) {
         <p className="seminar__date">Дата начала: {item.date}</p>
         <p className="seminar__time">Время начала: {item.time}</p>
       </div>
+
       <img className="seminar__image" src={item.photo} alt={item.title} />
+
       <button className="seminar__btn btn btn--close" onClick={handleDelete}>
         <span>✖</span>
       </button>
+
       <button
         className="seminar__btn seminar__btn--edit"
         onClick={() => {
