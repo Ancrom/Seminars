@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { getSeminars, updateSeminar } from "../../services/SeminarService";
+import {
+  getSeminars,
+  updateSeminar,
+  removeSeminar,
+} from "../../services/SeminarService";
 import Seminar from "../Seminar/Seminar";
 import SeminarModal from "../SeminarModal/SeminarModal";
 import "./SeminarsBody.css";
@@ -12,7 +16,7 @@ const SeminarsBody = () => {
   const [id, setId] = useState(null); // ID семинара для редактирования
 
   useEffect(() => {
-		// Загружаем список семинаров при первом рендере
+    // Загружаем список семинаров при первом рендере
     getSeminars()
       .then((data) => setSeminars(data))
       .catch((err) => setError(err))
@@ -23,7 +27,7 @@ const SeminarsBody = () => {
     try {
       const newSeminar = await updateSeminar(id, newData);
 
-			// Обновляем только изменённый семинар в списке
+      // Обновляем только изменённый семинар в списке
       setSeminars((prevSeminars) =>
         prevSeminars.map((item) => (item.id === id ? { ...newSeminar } : item))
       );
@@ -34,11 +38,18 @@ const SeminarsBody = () => {
     }
   };
 
-  const onDelete = (id) => {
-		// Локально удаляем семинар, запрос на сервер подаётся в компоненте семинара
-    setSeminars((prevSeminars) =>
-      prevSeminars.filter((item) => item.id !== id)
-    );
+  const onDelete = async (id) => {
+    if (!window.confirm("Вы действительно хотите удалить семинар?")) return;
+    // Запрос на удаление
+    try {
+      await removeSeminar(id);
+			
+      setSeminars((prevSeminars) =>
+        prevSeminars.filter((item) => item.id !== id)
+      );
+    } catch (err) {
+      console.log("Ошибка удаления семинара", err);
+    }
   };
 
   if (isLoading) return <div>Загрузка семинаров...</div>;

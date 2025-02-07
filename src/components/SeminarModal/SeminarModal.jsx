@@ -3,14 +3,14 @@ import formatDateToLocal from "../../utils/dateUtils";
 import "./SeminarModal.css";
 
 const SeminarModal = ({ setIsModalOpen, id, onSubmit }) => {
-	// Хранение нового семинара при редактировании
+  // Хранение нового семинара при редактировании
   const [newSeminar, setNewSeminar] = useState({});
 
   const onEdit = (e) => {
     let key = e.target.name;
     let value = e.target.value;
 
-		// Форматирование даты в локальный формат
+    // Форматирование даты в локальный формат
     if (key === "date") {
       value = formatDateToLocal(e.target.value);
     }

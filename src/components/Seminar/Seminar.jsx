@@ -1,16 +1,7 @@
-import { removeSeminar } from "../../services/SeminarService";
 import "./Seminar.css";
 import "../../assets/styles/button.css";
 
 export default function Seminar({ item, onDelete, setId, setIsModalOpen }) {
-  const handleDelete = async () => {
-    if (window.confirm("Вы действительно хотите удалить семинар?")) {
-      removeSeminar(item.id) // Запрос на сервер на удаление семинара
-        .then(() => onDelete(item.id)) // Локально удаляем семинар
-        .catch((err) => console.log(err));
-    }
-  };
-
   return (
     <div className="seminar" key={item.id}>
       <div className="seminar__text-wrapper">
@@ -22,7 +13,10 @@ export default function Seminar({ item, onDelete, setId, setIsModalOpen }) {
 
       <img className="seminar__image" src={item.photo} alt={item.title} />
 
-      <button className="seminar__btn btn btn--close" onClick={handleDelete}>
+      <button
+        className="seminar__btn btn btn--close"
+        onClick={() => onDelete(item.id)}
+      >
         <span>✖</span>
       </button>
 
