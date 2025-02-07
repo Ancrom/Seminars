@@ -1,0 +1,44 @@
+.seminar {
+	background-color: rgb(77, 50, 50);
+	border-radius: 15px;
+	overflow: hidden;
+	max-width: 750px;
+	line-height: 1.1;
+	position: relative;
+}
+.seminar + .seminar {
+	margin-top: 60px;
+}
+.seminar__text-wrapper {
+	padding: 30px;
+}
+.seminar__title {
+	font-weight: 700;
+	font-size: 30px;
+}
+.seminar__title:not(:last-child) {
+	margin-bottom: 25px;
+}
+.seminar__description {
+	font-size: 17px;
+}
+.seminar__date {
+	font-size: 12px;
+	color: rgb(173, 173, 173);
+}
+.seminar__time {
+	font-size: 12px;
+	color: rgb(173, 173, 173);
+}
+.seminar__btn--edit {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 10px;
+	color: white;
+	font-size: 10px;
+	transition: color 0.2s ease-out;
+}
+.seminar__btn--edit:hover {
+	color: rgb(173, 173, 173);
+}

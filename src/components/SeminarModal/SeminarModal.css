@@ -1,0 +1,66 @@
+.seminar-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: black;
+}
+.seminar-modal__body {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgb(230, 222, 217);
+	padding: 20px;
+	border-radius: 15px;
+}
+.seminar-modal__title {
+	margin-bottom: 10px;
+}
+.form {
+	display: flex;
+	flex-direction: column;
+}
+.form > * {
+	margin-bottom: 10px;
+}
+.form__textarea {
+	resize: none;
+	padding: 5px 10px;
+	border: 1px solid black;
+	min-width: 320px;
+	min-height: 220px;
+}
+.form__label {
+	background-color: #efefef;
+	border: 1px solid rgb(138, 138, 138);
+	font-size: 12px;
+	padding: 5px 10px;
+	display: inline-block;
+}
+.form__label:hover {
+	background-color: rgb(233, 232, 232);
+}
+.form__label input[type="file"] {
+	display: none;
+}
+.form__error {
+	margin-top: 2px;
+	color: red;
+	font-size: 10px;
+}
+.form__input {
+	padding: 5px 10px;
+	border: 1px solid black;
+}
+.form__btn {
+	padding: 10px;
+	color: white;
+	background-color: rgb(77, 50, 50);
+	transition: background-color 0.2s ease-out;
+}
+.form__btn:hover {
+	background-color: rgb(138, 89, 89);
+}

@@ -1,0 +1,23 @@
+.btn {
+	cursor: pointer;
+}
+.btn span {
+	display: inline-block;
+	transition: transform 0.2s ease-out;
+}
+.btn--close {
+	background-color: red;
+	padding: 5px 10px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	transition: background-color 0.2s ease-out;
+	border-radius: 0 0 0 15px;
+	cursor: pointer;
+}
+.btn--close span {
+	transform: rotate(0deg);
+}
+.btn--close:hover span {
+	transform: rotate(90deg);
+}

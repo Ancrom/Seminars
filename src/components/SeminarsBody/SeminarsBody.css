@@ -1,0 +1,6 @@
+.seminars {
+	padding: 100px 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
